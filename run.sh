@@ -4,7 +4,7 @@ s3get () {
     echo "sync from s3"
     mkdir -p ${DEST_PATH}
 
-    result=$(aws s3 sync s3://${AWS_BUCKET}/${KEY_PATH} ${DEST_PATH} --exclude "*.pyc" --delete 2>&1)
+    result=$(aws s3 sync --exact-timestamps s3://${AWS_BUCKET}/${KEY_PATH} ${DEST_PATH} --exclude "*.pyc" --delete 2>&1)
     result_code=$?
 
     if [[ $result_code != 0 ]]; then
