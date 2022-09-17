@@ -15,7 +15,6 @@ s3get () {
     echo "finished downloading from s3"
 }
 
-s3get
 while true; do
   s3get
   sleep ${INTERVAL}

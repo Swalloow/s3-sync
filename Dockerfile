@@ -1,11 +1,7 @@
-FROM python:3.8-alpine
+FROM alpine:3
 
-RUN pip install -U pip awscli && \
-    apk add --no-cache --update rsync
+COPY run.sh /run.sh
 
-COPY . /src
-WORKDIR /src
+RUN apk add --no-cache aws-cli && chmod a+x /run.sh
 
-USER root
-
-CMD ["/bin/sh","/src/run.sh"]
+CMD ["/bin/sh","/run.sh"]
